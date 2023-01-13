@@ -1,1 +1,3 @@
-console.log('loom-action');
+import { LoomAction } from './LoomAction';
+
+LoomAction.run();
