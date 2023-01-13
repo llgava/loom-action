@@ -1,0 +1,15 @@
+name: 'Loom'
+description: 'TODO'
+inputs:
+  pattern:
+    description: 'TODO'
+    required: true,
+    default: 'Mojang'
+
+outputs:
+  TODO:
+    description: TODO
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
