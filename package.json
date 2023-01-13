@@ -1,0 +1,31 @@
+{
+  "name": "loom-action",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "repository": "git@github.com:llgava/loom-action.git",
+  "author": "Leonardo Luiz Gava <llgavamt@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "keywords": ["action", "minecraft bedrock", "node"],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest"
+  },
+
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-plugin-github": "^4.6.0",
+    "eslint-plugin-jest": "^27.2.1",
+    "jest": "^29.3.1",
+    "js-yaml": "^4.1.0",
+    "prettier": "^2.8.2",
+    "ts-jest": "^29.0.5",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0"
+  }
+}
