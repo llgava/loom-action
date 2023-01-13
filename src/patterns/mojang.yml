@@ -1,5 +1,5 @@
 BEHAVIOR_PACK:
-  animation_controllers: '.animation_controllers.json.json'
+  animation_controllers: '.animation_controllers.json'
   animations: '.animation.json'
   biomes: '.biome.json'
   blocks: '.block.json'
@@ -14,7 +14,7 @@ BEHAVIOR_PACK:
   trading: '.trade.json'
 
 RESOURCE_PACK:
-  animation_controllers: '.animation_controllers.json.json'
+  animation_controllers: '.animation_controllers.json'
   animations: '.animation.json'
   attachables: '.attachable.json'
   entity: '.entity.json'
