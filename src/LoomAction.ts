@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import core from '@actions/core';
+import * as core from '@actions/core';
 import { PatternReader } from './PatternReader';
 import { BehaviorPackGroups, ResourcePackGroups } from './types/Groups';
 
@@ -10,21 +10,19 @@ export interface Groups {
 }
 
 export class LoomAction {
-  private static reader: PatternReader;
+  private static pattern: string = core.getInput('pattern', { required: true });
+  private static bpPath: string = core.getInput('behavior_pack_path', { required: true });
+  private static rpPath: string = core.getInput('resource_pack_path', { required: true });
+  private static reader: PatternReader = new PatternReader(this.pattern);
 
   public static bpFiles: Groups[] = [];
   public static rpFiles: Groups[] = [];
 
   public static run(): void {
-    console.clear();
+    core.info('<----------------- RUNNING LOOM ACTION ----------------->');
 
-    const pattern = core.getInput('pattern');
-    const bpPath = core.getInput('behavior_pack_path');
-    const rpPath = core.getInput('resource_pack_path');
-    this.reader = new PatternReader(pattern);
-
-    this.getFilesFrom(bpPath, this.bpFiles);
-    this.getFilesFrom(rpPath, this.rpFiles);
+    this.getFilesFrom(this.bpPath, this.bpFiles);
+    this.getFilesFrom(this.rpPath, this.rpFiles);
 
     this.reader.testFileEndingFrom('BEHAVIOR_PACK', this.bpFiles);
     this.reader.testFileEndingFrom('RESOURCE_PACK', this.rpFiles);
