@@ -9,8 +9,8 @@ BEHAVIOR_PACK:
   feature_rules: '.feature_rule.json'
   items: '.item.json'
   loot_tables: '.loot_table.json'
-  spawn_rules: '.spawn_rule.json'
   recipes: '.recipe.json'
+  spawn_rules: '.spawn_rule.json'
   trading: '.trade.json'
 
 RESOURCE_PACK:
@@ -20,6 +20,6 @@ RESOURCE_PACK:
   entity: '.entity.json'
   fog: '.fog_setting.json'
   models: '.geo.json'
-  items: '.feature.json'
+  items: '.item.json'
   particles: '.particle.json'
   render_controllers: '.render_controllers.json'
