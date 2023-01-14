@@ -1,5 +1,7 @@
 import fs from 'fs';
 import YAML from 'yaml';
+import chalk from 'chalk';
+import * as core from '@actions/core';
 import * as patterns from './patterns';
 import { Groups } from './LoomAction';
 import { BehaviorPackGroups, ResourcePackGroups } from './types/Groups';
@@ -22,6 +24,8 @@ export class PatternReader {
 
   public testFileEndingFrom(pack: string, groups: Groups[]) {
     groups.forEach((file) => {
+      core.info(chalk.green('Testing ' + file.name + ' from the group ' + file.group));
+
       const expected = this.getFileEndingFrom(pack, file.group);
 
       if (!file.name.endsWith(expected)) {
