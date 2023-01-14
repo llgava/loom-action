@@ -1,0 +1,18 @@
+{
+  "format_version": "1.19.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "llgava:test",
+      "materials": { "default": "entity_custom" },
+      "textures": { "default": "textures/entity/test" },
+      "geometry": { "default": "geometry.test" },
+
+      "render_controllers": ["controller.render.default"],
+
+      "spawn_egg": {
+        "base_color": "#f700ff",
+        "overlay_color": "#b3ff00"
+      }
+    }
+  }
+}

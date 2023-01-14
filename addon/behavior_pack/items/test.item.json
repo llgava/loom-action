@@ -1,0 +1,14 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "llgava:test"
+    },
+
+    "components": {
+      "minecraft:icon": {
+        "texture": "test"
+      }
+    }
+  }
+}

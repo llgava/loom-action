@@ -1,0 +1,22 @@
+{
+  "tiers": [
+    {
+      "trades": [
+        {
+          "wants": [
+            {
+              "item": "minecraft:coal:0",
+              "quantity": {
+                "min": 16,
+                "max": 24
+              }
+            }
+          ],
+          "gives": [
+            { "item": "llgava:test" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "format_version": "1.19.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "llgava:test"
+    },
+    
+    "features": {}
+  }
+}

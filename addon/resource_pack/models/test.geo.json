@@ -1,0 +1,16 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.test",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_offset": [0, 0.5, 0],
+        "visible_bounds_width": 1.5
+      },
+
+      "bones": []
+    }
+  ]
+}
