@@ -1,5 +1,6 @@
 # Folders
 **/.vscode
+**/node_modules
 **/coverage
 # TODO: **/dist
 # TODO: **/addon
