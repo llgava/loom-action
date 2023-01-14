@@ -1,0 +1,4 @@
+export enum Pack {
+  BEHAVIOR_PACK = 'BEHAVIOR_PACK',
+  RESOURCE_PACK = 'RESOURCE_PACK',
+}

@@ -1,0 +1,15 @@
+export enum BehaviorPack {
+  ANIMATION_CONTROLLERS = 'animation_controllers',
+  ANIMATIONS = 'animations',
+  BIOMES = 'biomes',
+  BLOCKS = 'blocks',
+  DIALOGUE = 'dialogue',
+  ENTITIES = 'entities',
+  FEATURES = 'features',
+  FEATURE_RULES = 'feature_rules',
+  ITEMS = 'items',
+  LOOT_TABLES = 'loot_tables',
+  SPAWN_RULES = 'spawn_rules',
+  RECIPES = 'recipes',
+  TRADING = 'trading',
+}

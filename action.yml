@@ -2,9 +2,17 @@ name: 'Loom'
 description: 'TODO'
 inputs:
   pattern:
-    description: 'TODO'
-    required: true,
+    required: true
     default: 'Mojang'
+    description: 'The file endings style'
+  behavior_pack_path:
+    required: false
+    default: './behavior_packs/0'
+    description: The relative path to behavior pack folder
+  resource_pack_path:
+    required: false
+    default: './resource_packs/0'
+    description: The relative path to resource pack folder
 
 outputs:
   TODO:
