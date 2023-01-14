@@ -11,9 +11,9 @@ export interface Groups {
 }
 
 export class LoomAction {
-  private static pattern: string = 'mojang' /* core.getInput('pattern') */;
-  private static bpPath: string = 'addon/behavior_pack' /* core.getInput('behavior_pack_path') */;
-  private static rpPath: string = 'addon/resource_pack' /* core.getInput('resource_pack_path') */;
+  private static pattern: string = core.getInput('pattern');
+  private static bpPath: string = core.getInput('behavior_pack_path');
+  private static rpPath: string = core.getInput('resource_pack_path');
   private static reader: PatternReader = new PatternReader(this.pattern);
 
   public static bpFiles: Groups[] = [];

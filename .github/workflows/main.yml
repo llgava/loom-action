@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  check-file-ending:
+    runs-on: ubuntu-latest
+    name: Testing local job
+    steps:
+      - name: 🧪 loom-action step test
+        id: hello
+        uses: ./
+        with:
+          pattern: 'mojang'
+          behavior_pack_path: 'addon/behavior_pack'
+          resource_pack_path: 'addon/resource_pack'
