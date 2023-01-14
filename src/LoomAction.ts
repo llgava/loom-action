@@ -10,10 +10,7 @@ export interface Groups {
 }
 
 export class LoomAction {
-  private static pattern: string = core.getInput('pattern');
-  private static bpPath: string = core.getInput('behavior_pack_path');
-  private static rpPath: string = core.getInput('resource_pack_path');
-  private static reader: PatternReader = new PatternReader(this.pattern);
+  private static reader: PatternReader;
 
   public static bpFiles: Groups[] = [];
   public static rpFiles: Groups[] = [];
@@ -21,8 +18,13 @@ export class LoomAction {
   public static run(): void {
     console.clear();
 
-    this.getFilesFrom(this.bpPath, this.bpFiles);
-    this.getFilesFrom(this.rpPath, this.rpFiles);
+    const pattern = core.getInput('pattern');
+    const bpPath = core.getInput('behavior_pack_path');
+    const rpPath = core.getInput('resource_pack_path');
+    this.reader = new PatternReader(pattern);
+
+    this.getFilesFrom(bpPath, this.bpFiles);
+    this.getFilesFrom(rpPath, this.rpFiles);
 
     this.reader.testFileEndingFrom('BEHAVIOR_PACK', this.bpFiles);
     this.reader.testFileEndingFrom('RESOURCE_PACK', this.rpFiles);
