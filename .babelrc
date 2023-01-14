@@ -4,6 +4,5 @@
     "@babel/preset-env"
   ],
 
-  "comments": false,
-  "compact": true
+  "comments": false
 }
