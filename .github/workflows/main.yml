@@ -1,13 +1,26 @@
+name: Local tests 🧪
 on: [push]
 
 jobs:
-  check-file-ending:
+  loom-action:
     runs-on: ubuntu-latest
-    name: Testing local job
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
-      - name: Checkout
+      - name: Checkout 🔃
         uses: actions/checkout@v3
-      - name: 🧪 loom-action step test
+
+      - name: Installing Node.js 🔨
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Installing dependencies 🔨
+        run: npm install
+
+      - name: 🧪 Loom Action test
         id: hello
         uses: ./
         with:
