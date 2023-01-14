@@ -3,9 +3,10 @@
     "target": "es2022",
     "module": "CommonJS",
     "moduleDetection": "force",
-    "rootDir": ".",
+    "rootDir": "./src",
     "outDir": "./dist",
 
+    "noEmit": true,
     "strict": true,
     "noImplicitAny": false,
     "esModuleInterop": true,
