@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import core from '@actions/core';
-import chalk from 'chalk';
 import { PatternReader } from './PatternReader';
 import { BehaviorPackGroups, ResourcePackGroups } from './types/Groups';
 

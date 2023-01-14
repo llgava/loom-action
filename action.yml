@@ -3,21 +3,16 @@ description: 'TODO'
 inputs:
   pattern:
     required: true
-    default: 'Mojang'
+    default: 'mojang'
     description: 'The file endings style'
   behavior_pack_path:
     required: false
-    default: './behavior_packs/0'
+    default: 'behavior_packs/0'
     description: The relative path to behavior pack folder
   resource_pack_path:
     required: false
-    default: './resource_packs/0'
+    default: 'resource_packs/0'
     description: The relative path to resource pack folder
-
-outputs:
-  TODO:
-    description: TODO
-
 runs:
   using: 'node16'
   main: 'dist/index.js'
