@@ -24,7 +24,7 @@ export class PatternReader {
 
   public testFileEndingFrom(pack: string, groups: Groups[]) {
     core.info('');
-    core.info(`\u001b[1mVerifying the files ending... (${pack})`);
+    core.info(`\u001b[1m${pack.toLowerCase()}\u001b[0m - Verifying the files ending...`);
 
     groups.forEach((file) => {
       const expected = this.getFileEndingFrom(pack, file.group);
@@ -32,7 +32,7 @@ export class PatternReader {
       if (!file.name.endsWith(expected)) {
         this.invalid.push({ pack, expected, file });
         core.info('\u001b[31;1m✖\u001b[0m ' + file.name);
-        core.info(`  ↳ Expected: ${expected}`);
+        core.info(`  Expected ending: \u001b[32m${expected}\u001b[0m`);
         return;
       }
 

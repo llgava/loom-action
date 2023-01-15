@@ -35,28 +35,31 @@ export class LoomAction {
    * @param groups The array to save the collected files.
    */
   private static getFilesFrom(dir: string, groups: Groups[]) {
-    fs.readdirSync(dir).forEach(async (file) => {
-      const insideDir = path.join(dir, file);
-      const stat = fs.lstatSync(insideDir);
+    try {
+      fs.readdirSync(dir).forEach(async (file) => {
+        const insideDir = path.join(dir, file);
+        const stat = fs.lstatSync(insideDir);
 
-      if (stat.isDirectory()) {
-        return this.getFilesFrom(insideDir, groups);
-      }
+        if (stat.isDirectory()) {
+          return this.getFilesFrom(insideDir, groups);
+        }
 
-      const group = dir.split('/').at(2);
-      const name = path.basename(insideDir);
+        const group = dir.split('/').at(2);
+        const name = path.basename(insideDir);
 
-      if (!group || !name) return;
+        if (!group || !name) return;
 
-      groups.push({ group, name });
-    });
+        groups.push({ group, name });
+      });
+    } catch {
+      core.setFailed(`The directory '${dir}' cannot be found.`);
+    }
   }
 
   private static shouldFail() {
     if (this.reader.invalid.length > 0) {
       core.info('');
-      core.info('\u001b[33mGetting results...');
-      core.info('');
+      core.info('Getting results...');
 
       core.setFailed(this.reader.invalid.length + ' files has invalid ending.');
     }

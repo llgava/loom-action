@@ -30,7 +30,7 @@ var PatternReader = function () {
     value: function testFileEndingFrom(pack, groups) {
       var _this = this;
       core.info('');
-      core.info("\x1B[1mVerifying the files ending... (".concat(pack, ")"));
+      core.info("\x1B[1m".concat(pack.toLowerCase(), "\x1B[0m - Verifying the files ending..."));
       groups.forEach(function (file) {
         var expected = _this.getFileEndingFrom(pack, file.group);
         if (!file.name.endsWith(expected)) {
@@ -40,7 +40,7 @@ var PatternReader = function () {
             file: file
           });
           core.info("\x1B[31;1m\u2716\x1B[0m " + file.name);
-          core.info("  \u21B3 Expected: ".concat(expected));
+          core.info("  Expected ending: \x1B[32m".concat(expected, "\x1B[0m"));
           return;
         }
         core.info("\x1B[32;1m\u2714\x1B[0m " + file.name);

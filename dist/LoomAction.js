@@ -39,50 +39,53 @@ var LoomAction = function () {
     key: "getFilesFrom",
     value: function getFilesFrom(dir, groups) {
       var _this = this;
-      _fs["default"].readdirSync(dir).forEach(function () {
-        var _ref = _asyncToGenerator(_regeneratorRuntime().mark(function _callee(file) {
-          var insideDir, stat, group, name;
-          return _regeneratorRuntime().wrap(function _callee$(_context) {
-            while (1) switch (_context.prev = _context.next) {
-              case 0:
-                insideDir = _path["default"].join(dir, file);
-                stat = _fs["default"].lstatSync(insideDir);
-                if (!stat.isDirectory()) {
-                  _context.next = 4;
-                  break;
-                }
-                return _context.abrupt("return", _this.getFilesFrom(insideDir, groups));
-              case 4:
-                group = dir.split('/').at(2);
-                name = _path["default"].basename(insideDir);
-                if (!(!group || !name)) {
-                  _context.next = 8;
-                  break;
-                }
-                return _context.abrupt("return");
-              case 8:
-                groups.push({
-                  group: group,
-                  name: name
-                });
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }, _callee);
-        }));
-        return function (_x) {
-          return _ref.apply(this, arguments);
-        };
-      }());
+      try {
+        _fs["default"].readdirSync(dir).forEach(function () {
+          var _ref = _asyncToGenerator(_regeneratorRuntime().mark(function _callee(file) {
+            var insideDir, stat, group, name;
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
+              while (1) switch (_context.prev = _context.next) {
+                case 0:
+                  insideDir = _path["default"].join(dir, file);
+                  stat = _fs["default"].lstatSync(insideDir);
+                  if (!stat.isDirectory()) {
+                    _context.next = 4;
+                    break;
+                  }
+                  return _context.abrupt("return", _this.getFilesFrom(insideDir, groups));
+                case 4:
+                  group = dir.split('/').at(2);
+                  name = _path["default"].basename(insideDir);
+                  if (!(!group || !name)) {
+                    _context.next = 8;
+                    break;
+                  }
+                  return _context.abrupt("return");
+                case 8:
+                  groups.push({
+                    group: group,
+                    name: name
+                  });
+                case 9:
+                case "end":
+                  return _context.stop();
+              }
+            }, _callee);
+          }));
+          return function (_x) {
+            return _ref.apply(this, arguments);
+          };
+        }());
+      } catch (_unused) {
+        core.setFailed("The directory '".concat(dir, "' cannot be found."));
+      }
     }
   }, {
     key: "shouldFail",
     value: function shouldFail() {
       if (this.reader.invalid.length > 0) {
         core.info('');
-        core.info("\x1B[33mGetting results...");
-        core.info('');
+        core.info('Getting results...');
         core.setFailed(this.reader.invalid.length + ' files has invalid ending.');
       }
     }

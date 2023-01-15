@@ -2,8 +2,7 @@
 **/.vscode
 **/node_modules
 **/coverage
-# TODO: **/dist
-# TODO: **/addon
+**/addon
 
 # Files
 **/yarn-error.log
