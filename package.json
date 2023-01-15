@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "start": "node .",
-    "dev:build": "yarn build --watch",
+    "build:dev": "yarn build --watch",
     "dev": "babel-watch dist/index.js",
     "build": "babel src --extensions .ts, --out-dir dist --copy-files",
     "lint": "eslint src/**/*.ts",
@@ -27,6 +27,7 @@
     "@types/node": "^18.11.18",
     "@typescript-eslint/parser": "^5.48.1",
     "babel-watch": "^7.7.2",
+    "dotenv": "^16.0.3",
     "eslint": "^8.31.0",
     "eslint-plugin-github": "^4.6.0",
     "prettier": "^2.8.2",

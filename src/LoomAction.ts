@@ -1,3 +1,4 @@
+require('dotenv').config();
 import fs from 'fs';
 import path from 'path';
 import * as core from '@actions/core';
@@ -10,17 +11,15 @@ export interface Groups {
 }
 
 export class LoomAction {
-  private static pattern: string = core.getInput('pattern', { required: true });
-  private static bpPath: string = core.getInput('behavior_pack_path', { required: true });
-  private static rpPath: string = core.getInput('resource_pack_path', { required: true });
+  private static pattern: any = core.getInput('pattern') || process.env.PATTERN;
+  private static bpPath: any = core.getInput('behavior_pack_path') || process.env.BEHAVIOR_PACK_PATH;
+  private static rpPath: any = core.getInput('resource_pack_path') || process.env.RESOURCE_PACK_PATH;
   private static reader: PatternReader = new PatternReader(this.pattern);
 
   public static bpFiles: Groups[] = [];
   public static rpFiles: Groups[] = [];
 
   public static run(): void {
-    core.info('<----------------- RUNNING LOOM ACTION ----------------->');
-
     this.getFilesFrom(this.bpPath, this.bpFiles);
     this.getFilesFrom(this.rpPath, this.rpFiles);
 

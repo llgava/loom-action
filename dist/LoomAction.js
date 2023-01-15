@@ -21,6 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+require('dotenv').config();
 var LoomAction = function () {
   function LoomAction() {
     _classCallCheck(this, LoomAction);
@@ -28,7 +29,6 @@ var LoomAction = function () {
   _createClass(LoomAction, null, [{
     key: "run",
     value: function run() {
-      core.info('<----------------- RUNNING LOOM ACTION ----------------->');
       this.getFilesFrom(this.bpPath, this.bpFiles);
       this.getFilesFrom(this.rpPath, this.rpFiles);
       this.reader.testFileEndingFrom('BEHAVIOR_PACK', this.bpFiles);
@@ -90,15 +90,9 @@ var LoomAction = function () {
   return LoomAction;
 }();
 exports.LoomAction = LoomAction;
-_defineProperty(LoomAction, "pattern", core.getInput('pattern', {
-  required: true
-}));
-_defineProperty(LoomAction, "bpPath", core.getInput('behavior_pack_path', {
-  required: true
-}));
-_defineProperty(LoomAction, "rpPath", core.getInput('resource_pack_path', {
-  required: true
-}));
+_defineProperty(LoomAction, "pattern", core.getInput('pattern') || process.env.PATTERN);
+_defineProperty(LoomAction, "bpPath", core.getInput('behavior_pack_path') || process.env.BEHAVIOR_PACK_PATH);
+_defineProperty(LoomAction, "rpPath", core.getInput('resource_pack_path') || process.env.RESOURCE_PACK_PATH);
 _defineProperty(LoomAction, "reader", new _PatternReader.PatternReader(LoomAction.pattern));
 _defineProperty(LoomAction, "bpFiles", []);
 _defineProperty(LoomAction, "rpFiles", []);
