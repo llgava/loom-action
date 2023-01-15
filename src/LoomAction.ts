@@ -11,7 +11,6 @@ export interface Groups {
 }
 
 export class LoomAction {
-  private static silent: boolean | any = core.getInput('silent');
   private static pattern: string | any = core.getInput('pattern') || process.env.PATTERN;
   private static bpPath: string | any = core.getInput('behavior_pack_path') || process.env.BEHAVIOR_PACK_PATH;
   private static rpPath: string | any = core.getInput('resource_pack_path') || process.env.RESOURCE_PACK_PATH;
@@ -54,6 +53,7 @@ export class LoomAction {
       });
     } catch {
       core.setFailed(`The directory '${dir}' cannot be found.`);
+      core.ExitCode.Failure;
     }
   }
 
@@ -61,16 +61,16 @@ export class LoomAction {
     const fails = this.reader.invalid.length;
     const total = this.reader.numberOfFiles;
 
-    const level = this.silent ? 'warning' : 'setFailed';
-
     if (this.reader.invalid.length > 0) {
       core.info('');
-      core[level](`${fails} of ${total} files has invalid endings.`);
+      core.setFailed(`${fails} of ${total} files has invalid endings.`);
 
       this.reader.invalid.forEach((invalidFile) => {
         core.info('  \u001b[33m⚬\u001b[0m ' + invalidFile.file.name);
         core.info(`    Expected: \u001b[32m${invalidFile.expected}\u001b[0m\n`);
       });
+
+      core.ExitCode.Failure;
     }
   }
 }

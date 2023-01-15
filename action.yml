@@ -1,10 +1,6 @@
 name: 'Loom'
 description: 'TODO'
 inputs:
-  silent:
-    required: false
-    default: false
-    description: 'If false, the action will emit warning instead of error.'
   pattern:
     required: true
     default: 'mojang'
