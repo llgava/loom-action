@@ -85,9 +85,10 @@ var LoomAction = function () {
     value: function shouldFail() {
       var fails = this.reader.invalid.length;
       var total = this.reader.numberOfFiles;
+      var level = this.silent ? 'warning' : 'setFailed';
       if (this.reader.invalid.length > 0) {
         core.info('');
-        core.setFailed("".concat(fails, " of ").concat(total, " files has invalid endings."));
+        core[level]("".concat(fails, " of ").concat(total, " files has invalid endings."));
         this.reader.invalid.forEach(function (invalidFile) {
           core.info("  \x1B[33m\u26AC\x1B[0m " + invalidFile.file.name);
           core.info("    Expected: \x1B[32m".concat(invalidFile.expected, "\x1B[0m\n"));
@@ -98,6 +99,7 @@ var LoomAction = function () {
   return LoomAction;
 }();
 exports.LoomAction = LoomAction;
+_defineProperty(LoomAction, "silent", core.getInput('silent'));
 _defineProperty(LoomAction, "pattern", core.getInput('pattern') || process.env.PATTERN);
 _defineProperty(LoomAction, "bpPath", core.getInput('behavior_pack_path') || process.env.BEHAVIOR_PACK_PATH);
 _defineProperty(LoomAction, "rpPath", core.getInput('resource_pack_path') || process.env.RESOURCE_PACK_PATH);

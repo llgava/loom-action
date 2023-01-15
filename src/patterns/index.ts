@@ -1,4 +1,6 @@
 import path from 'path';
 
-export const mojang = path.join(__dirname, 'mojang.yml');
-export const custom = path.join(__dirname, '..', '..', 'pattern.yml');
+const custom = './pattern.yml';
+const mojang = path.join(__dirname, 'mojang.yml');
+
+export { custom, mojang };

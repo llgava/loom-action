@@ -1,14 +1,13 @@
-# TODO !!!
+[![Test loom (Custom Pattern)](https://github.com/llgava/loom-action/actions/workflows/custom.yml/badge.svg)](https://github.com/llgava/loom-action/actions/workflows/custom.yml) [![Test loom (Mojang Pattern)](https://github.com/llgava/loom-action/actions/workflows/mojang.yml/badge.svg)](https://github.com/llgava/loom-action/actions/workflows/mojang.yml)
 
-# loom-action
+# Loom
 
 | Pattern | Description                                                   |
 |---------|---------------------------------------------------------------|
 | Mojang  | The Mojang style for file endings. (Default)                  |
 | Custom  | The Custom style for file endings configured on `pattern.yml` |
 
-# development
-
+# TODO
 ```env
 # add .env file on project root
 PATTERN='mojang'

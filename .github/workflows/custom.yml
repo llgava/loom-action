@@ -1,4 +1,4 @@
-name: Test loom (Custom Pattern)
+name: Test loom (Custom Pattern + silent)
 on: [push]
 
 jobs:
@@ -23,6 +23,7 @@ jobs:
       - name: 🧪 Loom Action test
         uses: ./
         with:
+          silent: true
           pattern: 'custom'
           behavior_pack_path: 'addon/behavior_pack'
           resource_pack_path: 'addon/resource_pack'

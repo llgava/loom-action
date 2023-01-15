@@ -1,18 +1,22 @@
 name: 'Loom'
 description: 'TODO'
 inputs:
+  silent:
+    required: false
+    default: false
+    description: 'If false, the action will emit warning instead of error.'
   pattern:
     required: true
     default: 'mojang'
-    description: 'The file endings style'
+    description: 'The file endings style.'
   behavior_pack_path:
     required: false
     default: 'behavior_packs/0'
-    description: The relative path to behavior pack folder
+    description: 'The relative path to behavior pack folder.'
   resource_pack_path:
     required: false
     default: 'resource_packs/0'
-    description: The relative path to resource pack folder
+    description: 'The relative path to resource pack folder.'
 runs:
   using: 'node16'
   main: 'dist/index.js'

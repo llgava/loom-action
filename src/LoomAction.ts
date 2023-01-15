@@ -11,9 +11,10 @@ export interface Groups {
 }
 
 export class LoomAction {
-  private static pattern: any = core.getInput('pattern') || process.env.PATTERN;
-  private static bpPath: any = core.getInput('behavior_pack_path') || process.env.BEHAVIOR_PACK_PATH;
-  private static rpPath: any = core.getInput('resource_pack_path') || process.env.RESOURCE_PACK_PATH;
+  private static silent: boolean | any = core.getInput('silent');
+  private static pattern: string | any = core.getInput('pattern') || process.env.PATTERN;
+  private static bpPath: string | any = core.getInput('behavior_pack_path') || process.env.BEHAVIOR_PACK_PATH;
+  private static rpPath: string | any = core.getInput('resource_pack_path') || process.env.RESOURCE_PACK_PATH;
   private static reader: PatternReader = new PatternReader(this.pattern);
 
   public static bpFiles: Groups[] = [];
@@ -60,9 +61,11 @@ export class LoomAction {
     const fails = this.reader.invalid.length;
     const total = this.reader.numberOfFiles;
 
+    const level = this.silent ? 'warning' : 'setFailed';
+
     if (this.reader.invalid.length > 0) {
       core.info('');
-      core.setFailed(`${fails} of ${total} files has invalid endings.`);
+      core[level](`${fails} of ${total} files has invalid endings.`);
 
       this.reader.invalid.forEach((invalidFile) => {
         core.info('  \u001b[33m⚬\u001b[0m ' + invalidFile.file.name);
