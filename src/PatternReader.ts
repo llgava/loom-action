@@ -23,14 +23,22 @@ export class PatternReader {
   }
 
   public testFileEndingFrom(pack: string, groups: Groups[]) {
-    groups.forEach((file) => {
-      core.info(chalk.green('Testing ' + file.name + ' from the group ' + file.group));
+    core.info('');
+    core.info('┌────────────────────────────────────────────────────────────┐');
+    core.info('│ Verifying the files ending...                              │');
+    core.info('└────────────────────────────────────────────────────────────┘');
+    core.info('');
 
+    groups.forEach((file) => {
       const expected = this.getFileEndingFrom(pack, file.group);
 
       if (!file.name.endsWith(expected)) {
         this.invalid.push({ pack, expected, file });
+        core.info('✖ ' + file.name + ` (Expected: ${expected})`);
+        return;
       }
+
+      core.info('✔ ' + file.name);
     });
   }
 
