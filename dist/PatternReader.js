@@ -30,9 +30,7 @@ var PatternReader = function () {
     value: function testFileEndingFrom(pack, groups) {
       var _this = this;
       core.info('');
-      core.info('┌────────────────────────────────────────────────────────────┐');
-      core.info('│ Verifying the files ending...                              │');
-      core.info('└────────────────────────────────────────────────────────────┘');
+      core.info("\x1B[45mVerifying the files ending...");
       core.info('');
       groups.forEach(function (file) {
         var expected = _this.getFileEndingFrom(pack, file.group);

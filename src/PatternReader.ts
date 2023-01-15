@@ -24,9 +24,7 @@ export class PatternReader {
 
   public testFileEndingFrom(pack: string, groups: Groups[]) {
     core.info('');
-    core.info('┌────────────────────────────────────────────────────────────┐');
-    core.info('│ Verifying the files ending...                              │');
-    core.info('└────────────────────────────────────────────────────────────┘');
+    core.info('\u001b[45mVerifying the files ending...');
     core.info('');
 
     groups.forEach((file) => {

@@ -81,9 +81,7 @@ var LoomAction = function () {
     value: function shouldFail() {
       if (this.reader.invalid.length > 0) {
         core.info('');
-        core.info('┌────────────────────────────────────────────────────────────┐');
-        core.info('│ Getting results...                                         │');
-        core.info('└────────────────────────────────────────────────────────────┘');
+        core.info("\x1B[45mGetting results...");
         core.info('');
         core.setFailed(this.reader.invalid.length + ' files has invalid ending.');
       }
