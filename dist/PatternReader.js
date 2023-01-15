@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.PatternReader = void 0;
 var _fs = _interopRequireDefault(require("fs"));
 var _yaml = _interopRequireDefault(require("yaml"));
-var _chalk = _interopRequireDefault(require("chalk"));
 var core = _interopRequireWildcard(require("@actions/core"));
 var patterns = _interopRequireWildcard(require("./patterns"));
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -30,8 +29,12 @@ var PatternReader = function () {
     key: "testFileEndingFrom",
     value: function testFileEndingFrom(pack, groups) {
       var _this = this;
+      core.info('');
+      core.info('┌────────────────────────────────────────────────────────────┐');
+      core.info('│ Verifying the files ending...                              │');
+      core.info('└────────────────────────────────────────────────────────────┘');
+      core.info('');
       groups.forEach(function (file) {
-        core.info(_chalk["default"].green('Testing ' + file.name + ' from the group ' + file.group));
         var expected = _this.getFileEndingFrom(pack, file.group);
         if (!file.name.endsWith(expected)) {
           _this.invalid.push({
@@ -39,7 +42,10 @@ var PatternReader = function () {
             expected: expected,
             file: file
           });
+          core.info('✖ ' + file.name + " (Expected: ".concat(expected, ")"));
+          return;
         }
+        core.info('✔ ' + file.name);
       });
     }
   }, {

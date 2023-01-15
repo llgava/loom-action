@@ -80,7 +80,12 @@ var LoomAction = function () {
     key: "shouldFail",
     value: function shouldFail() {
       if (this.reader.invalid.length > 0) {
-        core.setFailed('TEST: Invalid file endings');
+        core.info('');
+        core.info('┌────────────────────────────────────────────────────────────┐');
+        core.info('│ Getting results...                                         │');
+        core.info('└────────────────────────────────────────────────────────────┘');
+        core.info('');
+        core.setFailed(this.reader.invalid.length + ' files has invalid ending.');
       }
     }
   }]);
