@@ -34,11 +34,11 @@ export class PatternReader {
 
       if (!file.name.endsWith(expected)) {
         this.invalid.push({ pack, expected, file });
-        core.info('✖ ' + file.name + ` (Expected: ${expected})`);
+        core.info('\u001b[31;1m✖\u001b[0m ' + file.name + ` (Expected: ${expected})`);
         return;
       }
 
-      core.info('✔ ' + file.name);
+      core.info('\u001b[32;1m✔\u001b[0m ' + file.name);
     });
   }
 
