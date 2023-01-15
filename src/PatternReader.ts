@@ -31,7 +31,8 @@ export class PatternReader {
 
       if (!file.name.endsWith(expected)) {
         this.invalid.push({ pack, expected, file });
-        core.info('\u001b[31;1m✖\u001b[0m ' + file.name + ` (Expected: ${expected})`);
+        core.info('\u001b[31;1m✖\u001b[0m ' + file.name);
+        core.info(`  ↳ Expected: ${expected}`);
         return;
       }
 

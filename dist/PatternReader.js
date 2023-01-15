@@ -39,7 +39,8 @@ var PatternReader = function () {
             expected: expected,
             file: file
           });
-          core.info("\x1B[31;1m\u2716\x1B[0m " + file.name + " (Expected: ".concat(expected, ")"));
+          core.info("\x1B[31;1m\u2716\x1B[0m " + file.name);
+          core.info("  \u21B3 Expected: ".concat(expected));
           return;
         }
         core.info("\x1B[32;1m\u2714\x1B[0m " + file.name);
