@@ -24,8 +24,7 @@ export class PatternReader {
 
   public testFileEndingFrom(pack: string, groups: Groups[]) {
     core.info('');
-    core.info('\u001b[33mVerifying the files ending...');
-    core.info('');
+    core.info(`\u001b[1mVerifying the files ending... (${pack})`);
 
     groups.forEach((file) => {
       const expected = this.getFileEndingFrom(pack, file.group);
