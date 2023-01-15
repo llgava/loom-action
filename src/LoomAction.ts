@@ -2,8 +2,9 @@ require('dotenv').config();
 import fs from 'fs';
 import path from 'path';
 import * as core from '@actions/core';
-import { PatternReader } from './PatternReader';
+import { FilePattern } from './core/FilePattern';
 import { BehaviorPackGroups, ResourcePackGroups } from './types/Groups';
+import { TerminalColor } from './types/TerminalColor';
 
 export interface Groups {
   group: BehaviorPackGroups | ResourcePackGroups;
@@ -11,22 +12,23 @@ export interface Groups {
 }
 
 export class LoomAction {
+  // GitHub action inputs
   private static pattern: string | any = core.getInput('pattern') || process.env.PATTERN;
   private static bpPath: string | any = core.getInput('behavior_pack_path') || process.env.BEHAVIOR_PACK_PATH;
   private static rpPath: string | any = core.getInput('resource_pack_path') || process.env.RESOURCE_PACK_PATH;
-  private static reader: PatternReader = new PatternReader(this.pattern);
 
-  public static bpFiles: Groups[] = [];
-  public static rpFiles: Groups[] = [];
+  private static bpFiles: Groups[] = [];
+  private static rpFiles: Groups[] = [];
+  private static patternReader: FilePattern = new FilePattern(this.pattern);
 
   public static run(): void {
     this.getFilesFrom(this.bpPath, this.bpFiles);
     this.getFilesFrom(this.rpPath, this.rpFiles);
 
-    this.reader.testFileEndingFrom('BEHAVIOR_PACK', this.bpFiles);
-    this.reader.testFileEndingFrom('RESOURCE_PACK', this.rpFiles);
+    this.patternReader.testFileEndingFrom('BEHAVIOR_PACK', this.bpFiles);
+    this.patternReader.testFileEndingFrom('RESOURCE_PACK', this.rpFiles);
 
-    this.shouldFail();
+    this.result();
   }
 
   /**
@@ -52,22 +54,24 @@ export class LoomAction {
         groups.push({ group, name });
       });
     } catch {
-      core.setFailed(`The directory '${dir}' cannot be found.`);
-      core.ExitCode.Failure;
+      core.setFailed(
+        `The directory '${TerminalColor.BOLD + dir + TerminalColor.RESET}' cannot be found on this repository.`
+      );
     }
   }
 
-  private static shouldFail() {
-    const fails = this.reader.invalid.length;
-    const total = this.reader.numberOfFiles;
+  private static result() {
+    const fails = this.patternReader.invalidFiles.length;
+    const total = this.patternReader.numberOfFiles;
 
-    if (this.reader.invalid.length > 0) {
+    if (fails > 0) {
       core.info('');
       core.setFailed(`${fails} of ${total} files has invalid endings.`);
 
-      this.reader.invalid.forEach((invalidFile) => {
-        core.info('  \u001b[33m⚬\u001b[0m ' + invalidFile.file.name);
-        core.info(`    Expected: \u001b[32m${invalidFile.expected}\u001b[0m\n`);
+      this.patternReader.invalidFiles.forEach((invalidFile) => {
+        core.info(TerminalColor.YELLOW + `  ⚬ ` + TerminalColor.RESET + invalidFile.file.name);
+        core.info(`    Expected: ` + TerminalColor.GREEN + invalidFile.expected + TerminalColor.RESET);
+        core.info('');
       });
 
       core.ExitCode.Failure;
