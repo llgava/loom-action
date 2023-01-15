@@ -29,6 +29,7 @@ var PatternReader = function () {
     key: "testFileEndingFrom",
     value: function testFileEndingFrom(pack, groups) {
       var _this = this;
+      if (core.getState('JOB_FAILED')) return;
       core.info('');
       core.info("\x1B[1m".concat(pack.toLowerCase(), "\x1B[0m - Verifying the files ending..."));
       groups.forEach(function (file) {

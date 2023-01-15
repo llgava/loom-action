@@ -23,6 +23,8 @@ export class PatternReader {
   }
 
   public testFileEndingFrom(pack: string, groups: Groups[]) {
+    if (core.getState('JOB_FAILED')) return;
+
     core.info('');
     core.info(`\u001b[1m${pack.toLowerCase()}\u001b[0m - Verifying the files ending...`);
 

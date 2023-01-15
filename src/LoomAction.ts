@@ -52,6 +52,7 @@ export class LoomAction {
         groups.push({ group, name });
       });
     } catch {
+      core.saveState('JOB_FAILED', true);
       core.setFailed(`The directory '${dir}' cannot be found.`);
     }
   }
@@ -61,6 +62,7 @@ export class LoomAction {
       core.info('');
       core.info('Getting results...');
 
+      core.saveState('JOB_FAILED', true);
       core.setFailed(this.reader.invalid.length + ' files has invalid ending.');
     }
   }
