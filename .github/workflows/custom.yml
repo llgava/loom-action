@@ -1,8 +1,8 @@
-name: Test loom
+name: Test loom (Custom Pattern)
 on: [push]
 
 jobs:
-  loom-action:
+  loom-action-custom:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,6 +23,6 @@ jobs:
       - name: 🧪 Loom Action test
         uses: ./
         with:
-          pattern: 'mojang'
+          pattern: 'custom'
           behavior_pack_path: 'addon/behavior_pack'
           resource_pack_path: 'addon/resource_pack'
