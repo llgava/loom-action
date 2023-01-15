@@ -52,18 +52,22 @@ export class LoomAction {
         groups.push({ group, name });
       });
     } catch {
-      core.saveState('JOB_FAILED', true);
       core.setFailed(`The directory '${dir}' cannot be found.`);
     }
   }
 
   private static shouldFail() {
+    const fails = this.reader.invalid.length;
+    const total = this.reader.numberOfFiles;
+
     if (this.reader.invalid.length > 0) {
       core.info('');
-      core.info('Getting results...');
+      core.setFailed(`${fails} of ${total} files has invalid endings.`);
 
-      core.saveState('JOB_FAILED', true);
-      core.setFailed(this.reader.invalid.length + ' files has invalid ending.');
+      this.reader.invalid.forEach((invalidFile) => {
+        core.info('  \u001b[33m⚬\u001b[0m ' + invalidFile.file.name);
+        core.info(`    Expected: \u001b[32m${invalidFile.expected}\u001b[0m\n`);
+      });
     }
   }
 }

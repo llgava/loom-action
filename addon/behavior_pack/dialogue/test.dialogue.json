@@ -1,0 +1,21 @@
+{
+  "format_version": "1.19.0",
+  "minecraft:npc_dialogue": {
+    "scenes": [
+      {
+        "scene_tag": "scene_1",
+        "npc_name": {
+          "rawtext": [
+            { "text": "My name is Gustavo" }
+          ]
+        },
+
+        "text": {
+          "rawtext": [
+            { "text": "...but you can call me Gus" }
+          ]
+        }
+      }
+    ]
+  }
+}

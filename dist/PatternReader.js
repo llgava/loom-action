@@ -23,6 +23,7 @@ var PatternReader = function () {
     _classCallCheck(this, PatternReader);
     _defineProperty(this, "path", void 0);
     _defineProperty(this, "invalid", []);
+    _defineProperty(this, "numberOfFiles", 0);
     this.path = patterns[pattern];
   }
   _createClass(PatternReader, [{
@@ -40,11 +41,11 @@ var PatternReader = function () {
             expected: expected,
             file: file
           });
-          core.info("\x1B[31;1m\u2716\x1B[0m " + file.name);
-          core.info("  Expected ending: \x1B[32m".concat(expected, "\x1B[0m"));
+          core.info("\x1B[31;1m\u2716\x1B[0m\x1B[30m ".concat(file.name, "\x1B[0m"));
           return;
         }
-        core.info("\x1B[32;1m\u2714\x1B[0m " + file.name);
+        core.info("\x1B[32;1m\u2714\x1B[0m\x1B[30m " + file.name + "\x1B[0m");
+        _this.numberOfFiles++;
       });
     }
   }, {

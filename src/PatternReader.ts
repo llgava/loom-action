@@ -17,6 +17,7 @@ interface InvalidFiles {
 export class PatternReader {
   private path: string;
   public invalid: InvalidFiles[] = [];
+  public numberOfFiles: number = 0;
 
   constructor(pattern: Patterns | string) {
     this.path = patterns[pattern];
@@ -33,12 +34,12 @@ export class PatternReader {
 
       if (!file.name.endsWith(expected)) {
         this.invalid.push({ pack, expected, file });
-        core.info('\u001b[31;1m✖\u001b[0m ' + file.name);
-        core.info(`  Expected ending: \u001b[32m${expected}\u001b[0m`);
+        core.info(`\u001b[31;1m✖\u001b[0m\u001b[30m ${file.name}\u001b[0m`);
         return;
       }
 
-      core.info('\u001b[32;1m✔\u001b[0m ' + file.name);
+      core.info('\u001b[32;1m✔\u001b[0m\u001b[30m ' + file.name + '\u001b[0m');
+      this.numberOfFiles++;
     });
   }
 

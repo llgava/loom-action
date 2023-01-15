@@ -1,0 +1,14 @@
+{
+  "format_version": "1.19.0",
+  "particle_effect": {
+    "description": {
+      "identifier": "llgava:test",
+      "basic_render_parameters": {
+        "material": "particles_alpha",
+        "texture": "textures/particle/test"
+      }
+    },
+    
+    "components": {}
+  }
+}

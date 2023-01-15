@@ -77,18 +77,21 @@ var LoomAction = function () {
           };
         }());
       } catch (_unused) {
-        core.saveState('JOB_FAILED', true);
         core.setFailed("The directory '".concat(dir, "' cannot be found."));
       }
     }
   }, {
     key: "shouldFail",
     value: function shouldFail() {
+      var fails = this.reader.invalid.length;
+      var total = this.reader.numberOfFiles;
       if (this.reader.invalid.length > 0) {
         core.info('');
-        core.info('Getting results...');
-        core.saveState('JOB_FAILED', true);
-        core.setFailed(this.reader.invalid.length + ' files has invalid ending.');
+        core.setFailed("".concat(fails, " of ").concat(total, " files has invalid endings."));
+        this.reader.invalid.forEach(function (invalidFile) {
+          core.info("  \x1B[33m\u26AC\x1B[0m " + invalidFile.file.name);
+          core.info("    Expected: \x1B[32m".concat(invalidFile.expected, "\x1B[0m\n"));
+        });
       }
     }
   }]);
