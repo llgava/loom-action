@@ -32,8 +32,9 @@ var PatternReader = function () {
       var _this = this;
       if (core.getState('JOB_FAILED')) return;
       core.info('');
-      core.info("\x1B[1m".concat(pack.toLowerCase(), "\x1B[0m - Verifying the files ending..."));
+      core.info("\x1B[1m".concat(pack.toLowerCase(), "\x1B[0m - Verifying files ending..."));
       groups.forEach(function (file) {
+        _this.numberOfFiles++;
         var expected = _this.getFileEndingFrom(pack, file.group);
         if (!file.name.endsWith(expected)) {
           _this.invalid.push({
@@ -41,11 +42,10 @@ var PatternReader = function () {
             expected: expected,
             file: file
           });
-          core.info("\x1B[31;1m\u2716\x1B[0m\x1B[30m ".concat(file.name, "\x1B[0m"));
+          core.info("\x1B[31;1m\u2716\x1B[0m ".concat(file.name, "\x1B[0m"));
           return;
         }
-        core.info("\x1B[32;1m\u2714\x1B[0m\x1B[30m " + file.name + "\x1B[0m");
-        _this.numberOfFiles++;
+        core.info("\x1B[32;1m\u2714\x1B[0m " + file.name + "\x1B[0m");
       });
     }
   }, {

@@ -27,19 +27,19 @@ export class PatternReader {
     if (core.getState('JOB_FAILED')) return;
 
     core.info('');
-    core.info(`\u001b[1m${pack.toLowerCase()}\u001b[0m - Verifying the files ending...`);
+    core.info(`\u001b[1m${pack.toLowerCase()}\u001b[0m - Verifying files ending...`);
 
     groups.forEach((file) => {
+      this.numberOfFiles++;
       const expected = this.getFileEndingFrom(pack, file.group);
 
       if (!file.name.endsWith(expected)) {
         this.invalid.push({ pack, expected, file });
-        core.info(`\u001b[31;1m✖\u001b[0m\u001b[30m ${file.name}\u001b[0m`);
+        core.info(`\u001b[31;1m✖\u001b[0m ${file.name}\u001b[0m`);
         return;
       }
 
-      core.info('\u001b[32;1m✔\u001b[0m\u001b[30m ' + file.name + '\u001b[0m');
-      this.numberOfFiles++;
+      core.info('\u001b[32;1m✔\u001b[0m ' + file.name + '\u001b[0m');
     });
   }
 
