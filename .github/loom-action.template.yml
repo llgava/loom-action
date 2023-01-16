@@ -1,0 +1,20 @@
+name: Loom Action Template
+on: [push]
+
+jobs:
+  loom-action:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout 🔃
+        uses: actions/checkout@v3
+
+      - name: Loom
+        uses: llgava/loom-action@v1.0.0
+        with:
+          pattern: 'mojang'
+          behavior_pack_path: 'behavior_pack/0'
+          resource_pack_path: 'resource_pack/0'

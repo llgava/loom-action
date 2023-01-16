@@ -1,24 +1,58 @@
-[![Test loom (Custom Pattern)](https://github.com/llgava/loom-action/actions/workflows/custom.yml/badge.svg)](https://github.com/llgava/loom-action/actions/workflows/custom.yml) [![Test loom (Mojang Pattern)](https://github.com/llgava/loom-action/actions/workflows/mojang.yml/badge.svg)](https://github.com/llgava/loom-action/actions/workflows/mojang.yml)
+# <img width="22" height="22" src="https://raw.githubusercontent.com/llgava/loom-action/main/.github/assets/loom.png" title="Neelix Icon"> Loom
+Standardization and moderation when creating addons for Minecraft Bedrock.
 
-# Loom
+## Setting up action step
+If necessary, use the template file located [here](./.github/loom-action.template.yml).
 
-| Pattern | Description                                                   |
-|---------|---------------------------------------------------------------|
-| Mojang  | The Mojang style for file endings. (Default)                  |
-| Custom  | The Custom style for file endings configured on `pattern.yml` |
+| Input              | Type             | Description                               | Required | Default          |
+|--------------------|------------------|-------------------------------------------|----------|------------------|
+| pattern            | mojang or custom | The file endings style                    |     ✔    | mojang           |
+| behavior_pack_path | string           | The relative path to behavior pack folder |     ✖    | behavior_packs/0 |
+| resource_pack_path | string           | The relative path to resource pack folder |     ✖    | resource_packs/0 |
 
-# TODO
-```env
-# add .env file on project root
-PATTERN='mojang'
-BEHAVIOR_PACK_PATH='addon/behavior_pack'
-RESOURCE_PACK_PATH='addon/resource_pack'
-```
+## Roadmap
+##### Updated: 01/15/2023
 
-```sh
-# Start build:dev (will recompile the code on every change)
-yarn build:dev or npm run build:dev
+- [ ] Add support to check identifier patterns
+- [ ] Add support to check missing names on text files
 
-# Start dev (will reload the app on every change)
-yarn dev or npm run dev
-```
+---
+
+## Setting up locally
+Want to contribute? Prepare the environment locally to test your contribution correctly!
+
+1. Clone the repository
+    ```sh
+    git clone https://github.com/llgava/loom-action.git
+    ```
+
+2. Install the dependencies
+    ```sh
+    yarn install or npm install
+    ```
+
+3. Setup your environment (`.env`) variables<br />
+If you prefer, use the [.env.template](./.env.template) template
+    
+    ```env
+    PATTERN='xxxxx'
+    BEHAVIOR_PACK_PATH='xxxxx'
+    RESOURCE_PACK_PATH='xxxxx'
+    ```
+
+4. Run the project in development mode
+    ```sh
+    # Will recompile the code on every change
+    yarn build:dev or npm run build:dev
+
+    # Will reload the app on every change
+    yarn dev or npm run dev
+    ```
+
+## Credits
+* Loom Texture used in the project image: [Bare Bones](https://www.curseforge.com/minecraft/texture-packs/bb) + [Robotpants](https://www.robotpants.net/portfolio)
+
+---
+
+### Contact
+Leonardo Luiz Gava - [@llgava](https://twitter.com/llgava "Leonardo Luiz Gava • Twitter") - <me@llgava.net>
