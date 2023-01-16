@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Loom 🧵
-        uses: llgava/loom-action@v1.0.0
+        uses: llgava/loom-action@v1.0.1
         with:
           pattern: 'mojang'
-          behavior_pack_path: 'behavior_pack/0'
-          resource_pack_path: 'resource_pack/0'
+          behavior_pack_path: 'behavior_packs/0'
+          resource_pack_path: 'resource_packs/0'

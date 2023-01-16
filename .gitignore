@@ -1,10 +1,12 @@
-# Folders
+# FOLDERS
 **/.vscode
 **/node_modules
 **/coverage
-#**/addon
 
-# Files
+# Used to test a local addon
+**/addon
+
+# FILES
 **/yarn-error.log
 **/package-lock.json
 **/.env

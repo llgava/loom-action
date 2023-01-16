@@ -33,13 +33,25 @@ export class FilePattern {
       this.numberOfFiles++;
       const expected = this.getFileEndingFrom(pack, file.group);
 
+      if (expected === undefined) return;
+
       if (!file.name.endsWith(expected)) {
         this.invalidFiles.push({ pack, expected, file });
-        core.info(TerminalColor.BRIGHT_RED + '✖ ' + TerminalColor.RESET + file.name);
+        core.info(
+          TerminalColor.BRIGHT_RED + '✖ ' +
+          TerminalColor.RESET + file.name +
+          TerminalColor.YELLOW + ` (${file.group})` +
+          TerminalColor.RESET
+        );
         return;
       }
 
-      core.info(TerminalColor.BRIGHT_GREEN + '✔ ' + TerminalColor.RESET + file.name);
+      core.info(
+        TerminalColor.BRIGHT_GREEN + '✔ ' +
+        TerminalColor.RESET + file.name +
+        TerminalColor.YELLOW + ` (${file.group})` +
+        TerminalColor.RESET
+      );
     });
   }
 
