@@ -35,7 +35,7 @@ export class FilePattern {
 
       if (!file.name.endsWith(expected)) {
         this.invalidFiles.push({ pack, expected, file });
-        core.info(TerminalColor.BRIGHT_GREEN + '✖' + TerminalColor.RESET + file.name);
+        core.info(TerminalColor.BRIGHT_RED + '✖ ' + TerminalColor.RESET + file.name);
         return;
       }
 

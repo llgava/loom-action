@@ -44,9 +44,6 @@ If you prefer, use the [.env.template](./.env.template) template
     ```sh
     # Will recompile the code on every change
     yarn build:dev or npm run build:dev
-
-    # Will reload the app on every change
-    yarn dev or npm run dev
     ```
 
 ---
