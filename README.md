@@ -1,4 +1,4 @@
-# <img width="22" height="22" src="https://raw.githubusercontent.com/llgava/loom-action/main/.github/assets/loom.png" title="Neelix Icon"> Loom
+# Loom
 Standardization and moderation when creating addons for Minecraft Bedrock.
 
 ## Setting up action step
@@ -48,9 +48,6 @@ If you prefer, use the [.env.template](./.env.template) template
     # Will reload the app on every change
     yarn dev or npm run dev
     ```
-
-## Credits
-* Loom Texture used in the project image: [Bare Bones](https://www.curseforge.com/minecraft/texture-packs/bb) + [Robotpants](https://www.robotpants.net/portfolio)
 
 ---
 
