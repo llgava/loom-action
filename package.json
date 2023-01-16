@@ -15,7 +15,7 @@
     "start": "node .",
     "build:dev": "yarn build --watch",
     "build": "clear && webpack --progress",
-    "package": "ncc build -o dist --license licenses.txt",
+    "package": "ncc build",
     "lint": "eslint src/**/*.ts"
   },
   "devDependencies": {
