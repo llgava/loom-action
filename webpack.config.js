@@ -1,5 +1,6 @@
 const path = require('path');
-const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
+const LicenseWebpackPlugin = require('license-webpack-plugin').LicenseWebpackPlugin;
 
 module.exports = {
   target: 'node',
@@ -22,9 +23,12 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: "./src/patterns/mojang.yml", to: "patterns/mojang.yml"}
+        { from: './src/patterns/mojang.yml', to: 'patterns/mojang.yml'}
       ],
     }),
+    new LicenseWebpackPlugin({
+      outputFilename: 'licenses.txt'
+    })
   ],
 
   output: {
