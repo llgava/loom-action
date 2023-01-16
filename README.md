@@ -15,6 +15,7 @@ If necessary, use the template file located [here](./.github/loom-action.templat
 
 - [ ] Add support to check identifier patterns
 - [ ] Add support to check missing names on text files
+- [ ] Add support to check the max supported path lenght
 
 ---
 
@@ -32,7 +33,7 @@ Want to contribute? Prepare the environment locally to test your contribution co
     ```
 
 3. Setup your environment (`.env`) variables<br />
-If you prefer, use the [.env.template](./.env.template) template
+If you prefer, use the [.env.template](./.github/.env.template) template
     
     ```env
     PATTERN='xxxxx'
