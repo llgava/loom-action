@@ -31,7 +31,7 @@ file-name-convention:
 # TODO: clarify this more
 # For example, the pattern applied at animation controller will be applied
 # as a pattern for the animation controllers at resource and behavior packs.
-identifier-name-patterns:
+name-patterns:
   identifier: '^(?:(?:(?!minecraft|minecon))+[a-z]*:[a-z_]*)+$'
   animation_controllers: '^(?:controller.animation.)+[a-z]+$'
   animations: '^(?:animation.)+[a-z]+$'
