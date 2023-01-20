@@ -21,20 +21,17 @@ export abstract class AbstractPatternReader {
 
   constructor(path: string) {
     this.path = path;
+
+    const file = fs.readFileSync(this.path, 'utf-8');
+    this.parsedFile = YAML.parse(file);
   }
 
   protected getExpectedNamePatternFrom(type: string): string {
-    const file = fs.readFileSync(this.path, 'utf-8');
-    const parsedFile = YAML.parse(file);
-
-    return parsedFile['name-patterns'][type];
+    return this.parsedFile['name-patterns'][type];
   }
 
   protected getExpectedFileNameEndingFrom(pack: string, group: BehaviorPackGroups | ResourcePackGroups): string {
-    const file = fs.readFileSync(this.path, 'utf-8');
-    const parsedFile = YAML.parse(file);
-
-    return parsedFile['file-name-convention'][pack][group];
+    return this.parsedFile['file-name-convention'][pack][group];
   }
 
   public abstract result(): void;
