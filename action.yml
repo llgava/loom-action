@@ -12,6 +12,11 @@ inputs:
     default: 'mojang'
     description: 'The file endings style.'
 
+  silent:
+    required: true
+    default: false
+    description: 'If true, no progress log will be showed. Only errors.'
+
   behavior_pack_path:
     required: false
     default: 'behavior_packs/0'

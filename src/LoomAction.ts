@@ -2,7 +2,7 @@ require('dotenv').config();
 import fs from 'fs';
 import path from 'path';
 import * as core from '@actions/core';
-import { FilePattern } from './core/FilePattern';
+import { FileNameConvention } from './core/FileNameConvention';
 import { BehaviorPackGroups, ResourcePackGroups } from './types/Groups';
 import { TerminalColor } from './types/TerminalColor';
 
@@ -19,7 +19,7 @@ export class LoomAction {
 
   private static bpFiles: Groups[] = [];
   private static rpFiles: Groups[] = [];
-  private static patternReader: FilePattern = new FilePattern(this.pattern);
+  private static patternReader: FileNameConvention = new FileNameConvention(this.pattern);
 
   public static run(): void {
     this.getFilesFrom(this.bpPath, this.bpFiles);
