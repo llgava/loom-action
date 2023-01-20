@@ -11,11 +11,11 @@ If necessary, use the template file located [here](./.github/loom-action.templat
 | resource_pack_path | string                          | The relative path to resource pack folder |     ✖    | resource_packs/0 |
 
 ## Roadmap
-##### Updated: 01/15/2023
+##### Updated: 01/20/2023
 
-- [ ] Add support to check identifier patterns
-- [ ] Add support to check missing names on text files
+- [x] Add support to check name patterns
 - [ ] Add support to check the max supported path lenght
+- [ ] Add support to check missing entities, blocks and items name on text files
 
 ---
 

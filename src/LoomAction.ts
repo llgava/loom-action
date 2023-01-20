@@ -4,7 +4,6 @@ import path from 'path';
 import * as core from '@actions/core';
 import { FileNameConvention } from './core/FileNameConvention';
 import { BehaviorPackGroups, ResourcePackGroups } from './@types/Groups';
-import { TerminalColor } from './@types/TerminalColor';
 import { NamePatterns } from './core/NamePatterns';
 import { Logger } from './utils/Logger';
 
@@ -28,7 +27,6 @@ export class LoomAction {
   public static run(): void {
     this.getFilesFrom(this.bpPath, this.bpFiles);
     this.getFilesFrom(this.rpPath, this.rpFiles);
-
 
     this.fileNameConvention.testFilesNameConvention('behavior_pack', this.bpFiles);
     this.fileNameConvention.testFilesNameConvention('resource_pack', this.rpFiles);
