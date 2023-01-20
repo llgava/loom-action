@@ -63,7 +63,7 @@ export class FileNameConvention extends AbstractPatternReader {
 
     if (fails > 0) {
       core.info('');
-      core.setFailed(`${fails} of ${total} files has invalid endings.`);
+      core.warning(`${fails} of ${total} files has invalid endings.`);
 
       this.invalidFiles.forEach((invalidFile) => {
         core.info(TerminalColor.YELLOW + `  ⚬ ` + TerminalColor.RESET + invalidFile.file.name);
@@ -71,9 +71,7 @@ export class FileNameConvention extends AbstractPatternReader {
         core.info('');
       });
 
-      core.ExitCode.Failure;
+      //core.ExitCode.Failure;
     }
   }
-
-
 }

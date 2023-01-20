@@ -29,10 +29,14 @@ export class LoomAction {
     this.getFilesFrom(this.rpPath, this.rpFiles);
 
 
+    this.fileNameConvention.testFilesNameConvention('behavior_pack', this.bpFiles);
+    this.fileNameConvention.testFilesNameConvention('resource_pack', this.rpFiles);
+
     this.namePatterns.testNamePattern(this.bpFiles);
-    //this.fileNameConvention.testFilesNameConvention('behavior_pack', this.bpFiles);
-    //this.fileNameConvention.testFilesNameConvention('resource_pack', this.rpFiles);
-    //this.fileNameConvention.result()
+    this.namePatterns.testNamePattern(this.rpFiles);
+    this.fileNameConvention.result();
+    this.namePatterns.result();
+
   }
 
   /**

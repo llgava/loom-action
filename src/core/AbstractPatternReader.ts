@@ -5,14 +5,14 @@ import { BehaviorPackGroups, ResourcePackGroups } from '../types/Groups';
 import { Groups } from '../LoomAction';
 
 interface InvalidFiles {
-  pack: string;
-  expected: string;
+  pack?: string;
+  expected: string | RegExp;
   file: Groups;
 }
 
 export abstract class AbstractPatternReader {
   // GitHub action inputs
-  public silent: boolean | any = core.getInput('silent') || true;
+  public silent: boolean | any = core.getInput('silent') || false;
 
   private path: string;
   private parsedFile: any;
@@ -26,8 +26,8 @@ export abstract class AbstractPatternReader {
     this.parsedFile = YAML.parse(file);
   }
 
-  protected getExpectedNamePatternFrom(type: string): string {
-    return this.parsedFile['name-patterns'][type];
+  protected getExpectedNamePatternFrom(type: string): RegExp {
+    return new RegExp(this.parsedFile['name-patterns'][type]);
   }
 
   protected getExpectedFileNameEndingFrom(pack: string, group: BehaviorPackGroups | ResourcePackGroups): string {

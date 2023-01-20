@@ -27,6 +27,6 @@ file-name-convention:
 
 name-patterns:
   identifiers: '^(?:seface)+[a-z]*:[a-z_]*)+$'
-  animation_controllers: '^(?:controller.animation.)+[a-z]+$'
-  animations: '^(?:animation.)+[a-z]+$'
-  geometries: '^(?:geometry.)+[a-z]+$'
+  animation_controllers: '^(?:controller.animation.)+[a-z0-9_.]+$'
+  animations: '^(?:animation.)+[a-z0-9_.]+$'
+  geometries: '^(?:geometry.)+[a-z_]+$'
