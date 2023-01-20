@@ -1,16 +1,9 @@
-import * as core from '@actions/core';
 import * as patterns from '../patterns';
 import { Groups } from '../LoomAction';
-import { TerminalColor } from '../types/TerminalColor';
 import { AbstractPatternReader } from './AbstractPatternReader';
+import { Logger } from '../utils/Logger';
 
 export type Patterns = 'mojang' | 'custom';
-
-interface InvalidFiles {
-  pack: string;
-  expected: string;
-  file: Groups;
-}
 
 export class FileNameConvention extends AbstractPatternReader {
   constructor(pattern: Patterns | string) {
@@ -21,8 +14,9 @@ export class FileNameConvention extends AbstractPatternReader {
     if (groups.length == 0) return;
 
     if (!this.silent) {
-      core.info('');
-      core.info(TerminalColor.BOLD + 'Verifying ' + pack.toLowerCase() + ' files ending');
+      Logger.sendMessage(
+        { message: `Verifying ${pack} files ending...`}
+      )
     }
 
     groups.forEach((file) => {
@@ -33,26 +27,7 @@ export class FileNameConvention extends AbstractPatternReader {
 
       if (!file.name.endsWith(expected)) {
         this.invalidFiles.push({ pack, expected, file });
-
-        if (!this.silent) {
-          core.info(
-            TerminalColor.BRIGHT_RED + '✖ ' +
-            TerminalColor.RESET + file.name +
-            TerminalColor.YELLOW + ` (${file.group})` +
-            TerminalColor.RESET
-          );
-        }
-
         return;
-      }
-
-      if (!this.silent) {
-        core.info(
-          TerminalColor.BRIGHT_GREEN + '✔ ' +
-          TerminalColor.RESET + file.name +
-          TerminalColor.YELLOW + ` (${file.group})` +
-          TerminalColor.RESET
-        );
       }
     });
   }
@@ -62,16 +37,18 @@ export class FileNameConvention extends AbstractPatternReader {
     const total = this.numberOfFiles;
 
     if (fails > 0) {
-      core.info('');
-      core.warning(`${fails} of ${total} files has invalid endings.`);
+      Logger.sendMessage(
+        { message: '' },
+        { message: `${fails} of ${total} files has invalid endings.`, setFailed: true }
+      )
 
       this.invalidFiles.forEach((invalidFile) => {
-        core.info(TerminalColor.YELLOW + `  ⚬ ` + TerminalColor.RESET + invalidFile.file.name);
-        core.info(`    Expected: ` + TerminalColor.GREEN + invalidFile.expected + TerminalColor.RESET);
-        core.info('');
+        Logger.sendMessage(
+          { prefix: { level: 'warning', value: '  ⚬'}, message: invalidFile.file.name },
+          { prefix: { value: '    Expected:' }, level: 'success', message: invalidFile.expected },
+          { message: '' }
+        )
       });
-
-      //core.ExitCode.Failure;
     }
   }
 }

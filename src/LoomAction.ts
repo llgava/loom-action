@@ -3,9 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import * as core from '@actions/core';
 import { FileNameConvention } from './core/FileNameConvention';
-import { BehaviorPackGroups, ResourcePackGroups } from './types/Groups';
-import { TerminalColor } from './types/TerminalColor';
+import { BehaviorPackGroups, ResourcePackGroups } from './@types/Groups';
+import { TerminalColor } from './@types/TerminalColor';
 import { NamePatterns } from './core/NamePatterns';
+import { Logger } from './utils/Logger';
 
 export interface Groups {
   group: BehaviorPackGroups | ResourcePackGroups;
@@ -36,7 +37,6 @@ export class LoomAction {
     this.namePatterns.testNamePattern(this.rpFiles);
     this.fileNameConvention.result();
     this.namePatterns.result();
-
   }
 
   /**
@@ -62,8 +62,8 @@ export class LoomAction {
         groups.push({ group, name, path: insideDir });
       });
     } catch {
-      core.setFailed(
-        `The directory '${TerminalColor.BOLD + dir + TerminalColor.RESET}' cannot be found on this repository.`
+      Logger.sendMessage(
+        { message: `The directory '${dir}' cannot be found on this repository.`, setFailed: true }
       );
     }
   }

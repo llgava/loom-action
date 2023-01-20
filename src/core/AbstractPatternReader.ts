@@ -1,7 +1,7 @@
 import fs from 'fs';
 import YAML from 'yaml';
 import * as core from '@actions/core';
-import { BehaviorPackGroups, ResourcePackGroups } from '../types/Groups';
+import { BehaviorPackGroups, ResourcePackGroups } from '../@types/Groups';
 import { Groups } from '../LoomAction';
 
 interface InvalidFiles {
