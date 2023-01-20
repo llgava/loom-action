@@ -1,4 +1,4 @@
-# Changelog - ![Latest Release](https://img.shields.io/github/v/release/llgava/loom-action?logo=github&logoColor=959da5&labelColor=353c43&color=0091c2&Current&label=Latest%20Version)
+# Changelog - ![Latest Release](https://img.shields.io/github/v/release/llgava/loom-action?logo=github&logoColor=959da5&labelColor=353c43&color=0091c2&Current&label=Latest%20Release)
 
 ## [1.0.1: Hotfix #1](https://github.com/llgava/loom-action/releases/tag/v1.0.1)
 ##### [Commit History](https://github.com/llgava/loom-action/compare/v1.0.0...v1.0.1) - (01-16-2023)
