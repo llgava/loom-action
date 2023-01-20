@@ -25,8 +25,8 @@ export class LoomAction {
     this.getFilesFrom(this.bpPath, this.bpFiles);
     this.getFilesFrom(this.rpPath, this.rpFiles);
 
-    this.patternReader.testFileEndingFrom('BEHAVIOR_PACK', this.bpFiles);
-    this.patternReader.testFileEndingFrom('RESOURCE_PACK', this.rpFiles);
+    this.patternReader.testFilesNameConvention('behavior_pack', this.bpFiles);
+    this.patternReader.testFilesNameConvention('resource_pack', this.rpFiles);
 
     this.result();
   }

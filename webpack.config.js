@@ -23,7 +23,8 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: './src/patterns/mojang.yml', to: 'patterns/mojang.yml'}
+        { from: './src/patterns/mojang.yml', to: 'patterns/mojang.yml' },
+        { from: './src/patterns/seface_blocks.yml', to: 'patterns/seface_blocks.yml' }
       ],
     }),
     new LicenseWebpackPlugin({

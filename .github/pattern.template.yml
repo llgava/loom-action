@@ -1,25 +1,37 @@
-BEHAVIOR_PACK:
-  animation_controllers: ''
-  animations: ''
-  biomes: ''
-  blocks: ''
-  dialogue: ''
-  entities: ''
-  features: ''
-  feature_rules: ''
-  items: ''
-  loot_tables: ''
-  recipes: ''
-  spawn_rules: ''
-  trading: ''
+file-name-convention:
 
-RESOURCE_PACK:
-  animation_controllers: ''
-  animations: ''
-  attachables: ''
-  entity: ''
-  fog: ''
-  models: ''
-  items: ''
-  particles: ''
-  render_controllers: ''
+  # Reference to files at your behavior pack folder
+  behavior_pack:
+    animation_controllers: '.animation_controllers.json'
+    animations: '.animation.json'
+    biomes: '.biome.json'
+    blocks: '.block.json'
+    dialogue: '.dialogue.json'
+    entities: '.behavior.json'
+    features: '.feature.json'
+    feature_rules: '.feature_rule.json'
+    items: '.item.json'
+    loot_tables: '.loot_table.json'
+    recipes: '.recipe.json'
+    spawn_rules: '.spawn_rule.json'
+    trading: '.trade.json'
+
+  # Reference to files at your resource pack folder
+  resource_pack:
+    animation_controllers: '.animation_controllers.json'
+    animations: '.animation.json'
+    attachables: '.attachable.json'
+    entity: '.entity.json'
+    fog: '.fog_setting.json'
+    models: '.geo.json'
+    items: '.item.json'
+    particles: '.particle.json'
+    render_controllers: '.render_controllers.json'
+
+# TODO: clarify this more
+# For example, the pattern applied at animation controller will be applied
+# as a pattern for the animation controllers at resource and behavior packs.
+identifier-name-patterns:
+  identifier: '^(?:(?:(?!minecraft|minecon))+[a-z]*:[a-z_]*)+$'
+  animation_controllers: '^(?:controller.animation.)+[a-z]+$'
+  animations: '^(?:animation.)+[a-z]+$'

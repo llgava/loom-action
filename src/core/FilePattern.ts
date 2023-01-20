@@ -23,7 +23,7 @@ export class FilePattern {
     this.path = patterns[pattern];
   }
 
-  public testFileEndingFrom(pack: string, groups: Groups[]) {
+  public testFilesNameConvention(pack: string, groups: Groups[]) {
     if (groups.length == 0) return;
 
     core.info('');
@@ -31,7 +31,7 @@ export class FilePattern {
 
     groups.forEach((file) => {
       this.numberOfFiles++;
-      const expected = this.getFileEndingFrom(pack, file.group);
+      const expected = this.getExpectedFileNameEndingFrom(pack, file.group);
 
       if (expected === undefined) return;
 
@@ -55,10 +55,10 @@ export class FilePattern {
     });
   }
 
-  public getFileEndingFrom(pack: string, group: BehaviorPackGroups | ResourcePackGroups): string {
+  private getExpectedFileNameEndingFrom(pack: string, group: BehaviorPackGroups | ResourcePackGroups): string {
     const file = fs.readFileSync(this.path, 'utf-8');
     const parsedFile = YAML.parse(file);
 
-    return parsedFile[pack][group];
+    return parsedFile['file-name-convention'][pack][group];
   }
 }

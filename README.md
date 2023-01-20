@@ -4,11 +4,11 @@ Standardization and moderation when creating addons for Minecraft Bedrock.
 ## Setting up action step
 If necessary, use the template file located [here](./.github/loom-action.template.yml).
 
-| Input              | Type             | Description                               | Required | Default          |
-|--------------------|------------------|-------------------------------------------|----------|------------------|
-| pattern            | mojang or custom | The file endings style                    |     ✔    | mojang           |
-| behavior_pack_path | string           | The relative path to behavior pack folder |     ✖    | behavior_packs/0 |
-| resource_pack_path | string           | The relative path to resource pack folder |     ✖    | resource_packs/0 |
+| Input              | Type                            | Description                               | Required | Default          |
+|--------------------|---------------------------------|-------------------------------------------|----------|------------------|
+| pattern            | custom, mojang or seface_blocks | The file endings style                    |     ✔    | mojang           |
+| behavior_pack_path | string                          | The relative path to behavior pack folder |     ✖    | behavior_packs/0 |
+| resource_pack_path | string                          | The relative path to resource pack folder |     ✖    | resource_packs/0 |
 
 ## Roadmap
 ##### Updated: 01/15/2023
