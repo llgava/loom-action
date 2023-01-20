@@ -24,3 +24,9 @@ file-name-convention:
     items: '.item.json'
     particles: '.particle.json'
     render_controllers: '.render_controllers.json'
+
+name-patterns:
+  identifiers: '^(?:(?:(?!minecraft|minecon))+[a-z]*:[a-z_]*)+$'
+  animation_controllers: '^(?:controller.animation.)+[a-z]+$'
+  animations: '^(?:animation.)+[a-z]+$'
+  geometries: '^(?:geometry.)+[a-z]+$'

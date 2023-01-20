@@ -5,10 +5,12 @@ import * as core from '@actions/core';
 import { FileNameConvention } from './core/FileNameConvention';
 import { BehaviorPackGroups, ResourcePackGroups } from './types/Groups';
 import { TerminalColor } from './types/TerminalColor';
+import { NamePatterns } from './core/NamePatterns';
 
 export interface Groups {
   group: BehaviorPackGroups | ResourcePackGroups;
   name: string;
+  path: string;
 }
 
 export class LoomAction {
@@ -19,16 +21,18 @@ export class LoomAction {
 
   private static bpFiles: Groups[] = [];
   private static rpFiles: Groups[] = [];
-  private static patternReader: FileNameConvention = new FileNameConvention(this.pattern);
+  private static fileNameConvention: FileNameConvention = new FileNameConvention(this.pattern);
+  private static namePatterns: NamePatterns = new NamePatterns(this.pattern);
 
   public static run(): void {
     this.getFilesFrom(this.bpPath, this.bpFiles);
     this.getFilesFrom(this.rpPath, this.rpFiles);
 
-    this.patternReader.testFilesNameConvention('behavior_pack', this.bpFiles);
-    this.patternReader.testFilesNameConvention('resource_pack', this.rpFiles);
 
-    this.result();
+    this.namePatterns.testNamePattern(this.bpFiles);
+    //this.fileNameConvention.testFilesNameConvention('behavior_pack', this.bpFiles);
+    //this.fileNameConvention.testFilesNameConvention('resource_pack', this.rpFiles);
+    //this.fileNameConvention.result()
   }
 
   /**
@@ -51,30 +55,12 @@ export class LoomAction {
 
         if (!group || !name) return;
 
-        groups.push({ group, name });
+        groups.push({ group, name, path: insideDir });
       });
     } catch {
       core.setFailed(
         `The directory '${TerminalColor.BOLD + dir + TerminalColor.RESET}' cannot be found on this repository.`
       );
-    }
-  }
-
-  private static result() {
-    const fails = this.patternReader.invalidFiles.length;
-    const total = this.patternReader.numberOfFiles;
-
-    if (fails > 0) {
-      core.info('');
-      core.setFailed(`${fails} of ${total} files has invalid endings.`);
-
-      this.patternReader.invalidFiles.forEach((invalidFile) => {
-        core.info(TerminalColor.YELLOW + `  ⚬ ` + TerminalColor.RESET + invalidFile.file.name);
-        core.info(`    Expected: ` + TerminalColor.GREEN + invalidFile.expected + TerminalColor.RESET);
-        core.info('');
-      });
-
-      core.ExitCode.Failure;
     }
   }
 }

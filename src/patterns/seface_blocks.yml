@@ -24,3 +24,9 @@ file-name-convention:
     items: '.rp_item.json'
     particles: '.particle.json'
     render_controllers: '.render_controllers.json'
+
+name-patterns:
+  identifiers: '^(?:seface)+[a-z]*:[a-z_]*)+$'
+  animation_controllers: '^(?:controller.animation.)+[a-z]+$'
+  animations: '^(?:animation.)+[a-z]+$'
+  geometries: '^(?:geometry.)+[a-z]+$'

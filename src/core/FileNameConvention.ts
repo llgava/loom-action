@@ -2,7 +2,7 @@ import * as core from '@actions/core';
 import * as patterns from '../patterns';
 import { Groups } from '../LoomAction';
 import { TerminalColor } from '../types/TerminalColor';
-import { Pattern } from './Pattern';
+import { AbstractPatternReader } from './AbstractPatternReader';
 
 export type Patterns = 'mojang' | 'custom';
 
@@ -12,12 +12,9 @@ interface InvalidFiles {
   file: Groups;
 }
 
-export class FileNameConvention extends Pattern {
-  public invalidFiles: InvalidFiles[] = [];
-  public numberOfFiles: number = 0;
-
+export class FileNameConvention extends AbstractPatternReader {
   constructor(pattern: Patterns | string) {
-    super(patterns[pattern])
+    super(patterns[pattern]);
   }
 
   public testFilesNameConvention(pack: string, groups: Groups[]) {
@@ -59,4 +56,24 @@ export class FileNameConvention extends Pattern {
       }
     });
   }
+
+  public result() {
+    const fails = this.invalidFiles.length;
+    const total = this.numberOfFiles;
+
+    if (fails > 0) {
+      core.info('');
+      core.setFailed(`${fails} of ${total} files has invalid endings.`);
+
+      this.invalidFiles.forEach((invalidFile) => {
+        core.info(TerminalColor.YELLOW + `  ⚬ ` + TerminalColor.RESET + invalidFile.file.name);
+        core.info(`    Expected: ` + TerminalColor.GREEN + invalidFile.expected + TerminalColor.RESET);
+        core.info('');
+      });
+
+      core.ExitCode.Failure;
+    }
+  }
+
+
 }

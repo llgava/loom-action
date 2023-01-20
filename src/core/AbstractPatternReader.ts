@@ -2,20 +2,32 @@ import fs from 'fs';
 import YAML from 'yaml';
 import * as core from '@actions/core';
 import { BehaviorPackGroups, ResourcePackGroups } from '../types/Groups';
+import { Groups } from '../LoomAction';
 
-export class Pattern {
-  private path: string;
+interface InvalidFiles {
+  pack: string;
+  expected: string;
+  file: Groups;
+}
+
+export abstract class AbstractPatternReader {
+  // GitHub action inputs
   public silent: boolean | any = core.getInput('silent') || true;
+
+  private path: string;
+  private parsedFile: any;
+  public invalidFiles: InvalidFiles[] = [];
+  public numberOfFiles: number = 0;
 
   constructor(path: string) {
     this.path = path;
   }
 
-  protected getExpectedNamePatternFor(value: string): string {
+  protected getExpectedNamePatternFrom(type: string): string {
     const file = fs.readFileSync(this.path, 'utf-8');
     const parsedFile = YAML.parse(file);
 
-    return parsedFile['name-patterns'][value];
+    return parsedFile['name-patterns'][type];
   }
 
   protected getExpectedFileNameEndingFrom(pack: string, group: BehaviorPackGroups | ResourcePackGroups): string {
@@ -24,4 +36,6 @@ export class Pattern {
 
     return parsedFile['file-name-convention'][pack][group];
   }
+
+  public abstract result(): void;
 }
