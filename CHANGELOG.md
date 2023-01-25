@@ -1,5 +1,15 @@
 # Changelog - ![Latest Release](https://img.shields.io/github/v/release/llgava/loom-action?logo=github&logoColor=959da5&labelColor=353c43&color=0091c2&Current&label=Latest%20Release)
 
+## [1.2.0: Ignore Files Support](https://github.com/llgava/loom-action/releases/tag/v1.1.0)
+##### [Commit History](https://github.com/llgava/loom-action/compare/v1.1.0...v1.2.0) - (01-25-2023)
+
+### **Added**
+* Ignore option to pattern files configuration.<br />
+Ignore option should be a list of [Glob Patterns](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns) where any file matching to any listed Glob Pattern will be ignored on configured verification. See a example on [Seface's Pattern](./dist/patterns/seface_blocks.yml) at `name-patterns` configuration.
+
+### **Issues**
+* Fixed a typo on [Seface's Pattern](./dist/patterns/seface_blocks.yml) causing the workflow to fail.
+
 ## [1.1.0: Name Patterns Support](https://github.com/llgava/loom-action/releases/tag/v1.1.0)
 ##### [Commit History](https://github.com/llgava/loom-action/compare/v1.0.1...v1.1.0) - (01-20-2023)
 
