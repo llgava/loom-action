@@ -1,4 +1,4 @@
-# Loom - ![Latest Release](https://img.shields.io/github/v/release/llgava/loom-action?logo=github&logoColor=959da5&labelColor=353c43&color=0091c2&Current&label=Latest%20Release)
+# Loom - ![Latest Release](https://img.shields.io/github/v/release/llgava/loom-action?logo=github&logoColor=959da5&labelColor=353c43&color=0091c2&Current&label=Latest%20Release) [![Tests](https://github.com/llgava/loom-action/actions/workflows/tests.yml/badge.svg)](https://github.com/llgava/loom-action/actions/workflows/tests.yml)
 Standardization and moderation when creating addons for Minecraft Bedrock.
 
 ## Setting up action step
