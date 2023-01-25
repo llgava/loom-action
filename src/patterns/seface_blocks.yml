@@ -36,6 +36,6 @@ name-patterns:
   ]
 
   identifiers: '^(?:seface)+:[a-z_]{3,}$'
-  animation_controllers: '^(?:controller.animation.)+[a-z0-9_.]+$'
-  animations: '^(?:animation.)+[a-z0-9_.]+$'
-  geometries: '^(?:geometry.)+[a-z_]+$'
+  animation_controllers: '^(?:controller.animation.)+[a-z0-9_.]{3,}$'
+  animations: '^(?:animation.)+[a-z0-9_.]{3,}$'
+  geometries: '^(?:geometry.)+[a-z_]{3,}$'
