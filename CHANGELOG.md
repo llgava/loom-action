@@ -7,8 +7,12 @@
 * Ignore option to pattern files configuration.<br />
 Ignore option should be a list of [Glob Patterns](https://www.malikbrowne.com/blog/a-beginners-guide-glob-patterns) where any file matching to any listed Glob Pattern will be ignored on configured verification. See a example on [Seface's Pattern](./dist/patterns/seface_blocks.yml) at `name-patterns` configuration.
 
+### **Changes**
+* Using json5 to parse json files.
+
 ### **Issues**
 * Fixed a typo on [Seface's Pattern](./dist/patterns/seface_blocks.yml) causing the workflow to fail.
+
 
 ## [1.1.0: Name Patterns Support](https://github.com/llgava/loom-action/releases/tag/v1.1.0)
 ##### [Commit History](https://github.com/llgava/loom-action/compare/v1.0.1...v1.1.0) - (01-20-2023)

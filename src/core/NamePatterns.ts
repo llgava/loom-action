@@ -1,6 +1,7 @@
 import fs from 'fs';
 import minimatch from 'minimatch';
 import * as patterns from '../patterns';
+import JSON from 'json5';
 import { JSONPath } from 'jsonpath-plus';
 import { Groups } from '../LoomAction';
 import { AbstractPatternReader } from './AbstractPatternReader';
