@@ -1,4 +1,6 @@
 file-name-convention:
+  ignore: []
+
   behavior_pack:
     animation_controllers: '.bp_anim_controllers.json'
     animations: '.bp_anim.json'
@@ -26,7 +28,14 @@ file-name-convention:
     render_controllers: '.render_controllers.json'
 
 name-patterns:
-  identifiers: '^(?:seface)+[a-z]*:[a-z_]*)+$'
+  ignore: [
+    '**/vanilla/*.entity.json',
+    '**/vanilla/*.behavior.json',
+    '**/entity/player.entity.json',
+    '**/entities/player.behavior.json'
+  ]
+
+  identifiers: '^(?:seface)+:[a-z_]{3,}$'
   animation_controllers: '^(?:controller.animation.)+[a-z0-9_.]+$'
   animations: '^(?:animation.)+[a-z0-9_.]+$'
   geometries: '^(?:geometry.)+[a-z_]+$'

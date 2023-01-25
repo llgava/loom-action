@@ -1,4 +1,6 @@
 file-name-convention:
+  # Glob patterns to ignore 'file-name-convention 'verification.
+  ignore: []
 
   # Reference to files at your behavior pack folder
   behavior_pack:
@@ -28,9 +30,12 @@ file-name-convention:
     particles: '.particle.json'
     render_controllers: '.render_controllers.json'
 
-# The patterns are defined globally, that is, the pattern defined
-# for 'animations' will serve both for resource pack and for behavior pack.
+# The Regex patterns are defined globally, the pattern defined for 'animations'
+# will be applied both for resource pack and for behavior pack.
 name-patterns:
+  # Glob patterns to 'ignore name-patterns' verification.
+  ignore: []
+
   identifiers: '^(?:(?:(?!minecraft|minecon))+[a-z]*:[a-z_]*)+$'
   animation_controllers: '^(?:controller.animation.)+[a-z0-9_.]+$'
   animations: '^(?:animation.)+[a-z0-9_.]+$'

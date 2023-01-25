@@ -1,4 +1,6 @@
 file-name-convention:
+  ignore: []
+
   behavior_pack:
     animation_controllers: '.animation_controllers.json'
     animations: '.animation.json'
@@ -26,7 +28,9 @@ file-name-convention:
     render_controllers: '.render_controllers.json'
 
 name-patterns:
-  identifiers: '^(?:(?:(?!minecraft|minecon))+[a-z]*:[a-z_]*)+$'
+  ignore: []
+
+  identifiers: '^(?:(?:(?!minecraft|minecon))+[a-z_]{3,}:[a-z_]{3,})$'
   animation_controllers: '^(?:controller.animation.)+[a-z0-9_.]+$'
   animations: '^(?:animation.)+[a-z0-9_.]+$'
   geometries: '^(?:geometry.)+[a-z_]+$'

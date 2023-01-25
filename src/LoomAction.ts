@@ -1,6 +1,7 @@
 require('dotenv').config();
 import fs from 'fs';
 import path from 'path';
+//import glob from 'glob';
 import * as core from '@actions/core';
 import { FileNameConvention } from './core/FileNameConvention';
 import { BehaviorPackGroups, ResourcePackGroups } from './@types/Groups';
@@ -43,6 +44,11 @@ export class LoomAction {
    * @param groups The array to save the collected files.
    */
   private static getFilesFrom(dir: string, groups: Groups[]) {
+    const test = [
+      '**/vanilla/*.entity.json',
+      '**/vanilla/*.behavior.json'
+    ];
+
     try {
       fs.readdirSync(dir).forEach(async (file) => {
         const insideDir = path.join(dir, file);

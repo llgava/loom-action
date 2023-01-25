@@ -15,7 +15,9 @@ export abstract class AbstractPatternReader {
   public silent: boolean | any = core.getInput('silent') || false;
 
   private path: string;
-  private parsedFile: any;
+  protected parsedFile: any;
+  protected abstract ignorePatterns: string[];
+  public ignoredFiles: Groups[] = [];
   public invalidFiles: InvalidFiles[] = [];
   public numberOfFiles: number = 0;
 

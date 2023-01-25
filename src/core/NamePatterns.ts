@@ -1,4 +1,5 @@
 import fs from 'fs';
+import minimatch from 'minimatch';
 import * as patterns from '../patterns';
 import { JSONPath } from 'jsonpath-plus';
 import { Groups } from '../LoomAction';
@@ -9,6 +10,8 @@ import { Logger } from '../utils/Logger';
 export type Patterns = 'mojang' | 'custom';
 
 export class NamePatterns extends AbstractPatternReader {
+  protected ignorePatterns: string[] = this.parsedFile['name-patterns']['ignore'];
+
   constructor(pattern: Patterns | string) {
     super(patterns[pattern]);
   }
@@ -26,6 +29,14 @@ export class NamePatterns extends AbstractPatternReader {
       this.numberOfFiles++;
 
       if (!file.name.endsWith('.json')) return;
+
+      this.ignorePatterns.forEach((value) => {
+        if (minimatch(file.path, value)) {
+          this.ignoredFiles.push(file);
+        }
+      });
+
+      if (this.ignoredFiles.includes(file)) return;
 
       const jsonPath = GroupsJSONPaths[file.group];
       const patternType = this.getPatternType(file.group);
